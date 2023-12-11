@@ -5,7 +5,7 @@ export class UsuarioController {
   private usuarioRepository = new UsuarioRepository();
   @Post()
   async criaUsuario(@Body() dadosDoUsuario) {
-    this.usuarioRepository.salvar(dadosDoUsuario)
+    this.usuarioRepository.salvar(dadosDoUsuario);
     return dadosDoUsuario;
   }
   @Get()
