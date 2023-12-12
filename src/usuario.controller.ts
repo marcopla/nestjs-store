@@ -9,7 +9,7 @@ export class UsuarioController {
     return dadosDoUsuario;
   }
   @Get()
-  async listUsuarios(){
+  async listUsuarios() {
     return this.usuarioRepository.listar();
   }
 }
