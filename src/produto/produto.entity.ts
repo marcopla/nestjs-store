@@ -23,8 +23,6 @@ export class ProdutoEntity {
   descricao: string;
   @Column({ name: 'categoria', length: 100, nullable: false })
   categoria: string;
-  // caracteristicas: CaracteristicaProduto[];
-  // imagens: ImagemProduto[];
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;
   @UpdateDateColumn({ name: 'updated_at' })

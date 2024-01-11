@@ -1,7 +1,7 @@
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 @Entity('produtos_caracteristicas')
 export class ProdutoCaracteristica {
-  @Column({ name: 'nome', length: 100, nullable: false })
+  @PrimaryColumn({ name: 'nome', length: 100, nullable: false })
   nome: string;
   @Column({ name: 'descricao', length: 100, nullable: false })
   descricao: string;
