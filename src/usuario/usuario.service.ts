@@ -10,7 +10,9 @@ export class UsuarioService {
     @InjectRepository(UsuarioEntity)
     private readonly usuarioRepository: Repository<UsuarioEntity>,
   ) {}
-
+  async criaUsuario(usuarioEntity: UsuarioEntity) {
+    await this.usuarioRepository.save(usuarioEntity);
+  }
   async listaUsuarios() {
     const usuariosSalvos = await this.usuarioRepository.find();
     const usuariosLista = usuariosSalvos.map(
@@ -18,4 +20,6 @@ export class UsuarioService {
     );
     return usuariosLista;
   }
+  async atualizaUsuario() {}
+  async deletaUsuario() {}
 }
