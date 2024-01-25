@@ -6,30 +6,42 @@ import {
   IsNotEmpty,
   IsNumber,
   IsString,
+  IsUUID,
   IsUrl,
   MaxLength,
   Min,
   ValidateNested,
 } from 'class-validator';
+import { ProdutoEntity } from '../produto.entity';
 
-export class CaracteristicasDoProdutoDTO {
+export class CaracteristicasProdutoDTO {
+  id: string;
+
   @IsString()
   @IsNotEmpty({ message: 'O nome da característica não pode fica vazio.' })
   nome: string;
   @IsString()
   @IsNotEmpty({ message: 'A descrição não pode ficar vazia.' })
   descricao: string;
+
+  produto: ProdutoEntity;
 }
 
-export class ImagemDoProdutoDTO {
+export class ImagemProdutoDTO {
+  id: string;
+
   @IsUrl()
   url: string;
   @IsString()
   @IsNotEmpty({ message: 'Descrição deve ser preenchida.' })
   descricao: string;
+  produto: ProdutoEntity;
 }
 
 export class CriaProdutoDTO {
+  @IsUUID(undefined, { message: 'ID do usuário Inválido' })
+  usuarioId: string;
+
   @IsString()
   @IsNotEmpty({ message: 'Nome do produto não pode ser vazio' })
   nome: string;
@@ -50,14 +62,14 @@ export class CriaProdutoDTO {
   @ValidateNested()
   @IsArray()
   @ArrayMinSize(3)
-  @Type(() => CaracteristicasDoProdutoDTO)
-  caracteristicas: CaracteristicasDoProdutoDTO[];
+  @Type(() => CaracteristicasProdutoDTO)
+  caracteristicas: CaracteristicasProdutoDTO[];
 
   @ValidateNested()
   @IsArray()
   @ArrayMinSize(1)
-  @Type(() => ImagemDoProdutoDTO)
-  imagens: ImagemDoProdutoDTO[];
+  @Type(() => ImagemProdutoDTO)
+  imagens: ImagemProdutoDTO[];
 
   @IsString()
   @IsNotEmpty({ message: 'Categoria do produto não pode ser vazia' })

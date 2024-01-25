@@ -23,8 +23,9 @@ export class ProdutoController {
     produtoEntity.categoria = dadosProduto.categoria;
     produtoEntity.caracteristicas = dadosProduto.caracteristicas;
     produtoEntity.imagens = dadosProduto.imagens;
-    const produtoCadastrado = this.produtoService.salvar(dadosProduto);
-    return dadosDoProduto;
+
+    const produtoCadastrado = this.produtoService.CriaProduto(produtoEntity);
+    return produtoCadastrado;
   }
   @Get()
   async listaProdutos() {
