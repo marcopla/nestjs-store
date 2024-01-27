@@ -6,6 +6,10 @@ export class ProdutoImagemEntity {
   url: string;
   @Column({ name: 'descricao', length: 100, nullable: false })
   descricao: string;
-  @ManyToOne(() => ProdutoEntity, (produto) => produto.imagem)
+  @ManyToOne(() => ProdutoEntity, (produto) => produto.imagens, {
+    orphanedRowAction: 'delete',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   produto: ProdutoEntity;
 }
